@@ -1,0 +1,226 @@
+{
+  "info": {
+    "_postman_id": "2ee9cc21-f043-4035-bf52-d6527984c6e1",
+    "name": "Flask user app",
+    "description": "EECE 435L Lab 5 \u2014 Jad El Harkae",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Add user",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": {
+          "raw": "{{base_url}}/api/users/add"
+        },
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"name\": \"Jad El Harkae\",\n  \"email\": \"jad@example.com\",\n  \"phone\": \"01000000\",\n  \"address\": \"Beirut\",\n  \"country\": \"Lebanon\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      },
+      "response": [
+        {
+          "name": "200 OK",
+          "originalRequest": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/api/users/add"
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"Jad El Harkae\",\n  \"email\": \"jad@example.com\",\n  \"phone\": \"01000000\",\n  \"address\": \"Beirut\",\n  \"country\": \"Lebanon\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "status": "OK",
+          "code": 200,
+          "_postman_previewlanguage": "json",
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "body": "{\n  \"user_id\": 1,\n  \"name\": \"Jad El Harkae\",\n  \"email\": \"jad@example.com\",\n  \"phone\": \"01000000\",\n  \"address\": \"Beirut\",\n  \"country\": \"Lebanon\"\n}"
+        }
+      ]
+    },
+    {
+      "name": "Get users",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{base_url}}/api/users"
+        }
+      },
+      "response": [
+        {
+          "name": "200 OK",
+          "originalRequest": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/api/users"
+            }
+          },
+          "status": "OK",
+          "code": 200,
+          "_postman_previewlanguage": "json",
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "body": "[\n  {\n    \"user_id\": 1,\n    \"name\": \"Jad El Harkae\",\n    \"email\": \"jad@example.com\",\n    \"phone\": \"01000000\",\n    \"address\": \"Beirut\",\n    \"country\": \"Lebanon\"\n  }\n]"
+        }
+      ]
+    },
+    {
+      "name": "Get user by ID",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{base_url}}/api/users/1"
+        }
+      },
+      "response": [
+        {
+          "name": "200 OK",
+          "originalRequest": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/api/users/1"
+            }
+          },
+          "status": "OK",
+          "code": 200,
+          "_postman_previewlanguage": "json",
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "body": "{\n  \"user_id\": 1,\n  \"name\": \"Jad El Harkae\",\n  \"email\": \"jad@example.com\",\n  \"phone\": \"01000000\",\n  \"address\": \"Beirut\",\n  \"country\": \"Lebanon\"\n}"
+        }
+      ]
+    },
+    {
+      "name": "Update user",
+      "request": {
+        "method": "PUT",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": {
+          "raw": "{{base_url}}/api/users/update"
+        },
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"user_id\": 1,\n  \"name\": \"Jad El Harkae\",\n  \"email\": \"jad@example.com\",\n  \"phone\": \"01999999\",\n  \"address\": \"Beirut\",\n  \"country\": \"Lebanon\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      },
+      "response": [
+        {
+          "name": "200 OK",
+          "originalRequest": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/api/users/update"
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"user_id\": 1,\n  \"name\": \"Jad El Harkae\",\n  \"email\": \"jad@example.com\",\n  \"phone\": \"01999999\",\n  \"address\": \"Beirut\",\n  \"country\": \"Lebanon\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "status": "OK",
+          "code": 200,
+          "_postman_previewlanguage": "json",
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "body": "{\n  \"user_id\": 1,\n  \"name\": \"Jad El Harkae\",\n  \"email\": \"jad@example.com\",\n  \"phone\": \"01999999\",\n  \"address\": \"Beirut\",\n  \"country\": \"Lebanon\"\n}"
+        }
+      ]
+    },
+    {
+      "name": "Delete user",
+      "request": {
+        "method": "DELETE",
+        "header": [],
+        "url": {
+          "raw": "{{base_url}}/api/users/delete/1"
+        }
+      },
+      "response": [
+        {
+          "name": "200 OK",
+          "originalRequest": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/api/users/delete/1"
+            }
+          },
+          "status": "OK",
+          "code": 200,
+          "_postman_previewlanguage": "json",
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "body": "{\n  \"status\": \"User deleted successfully\"\n}"
+        }
+      ]
+    }
+  ]
+}

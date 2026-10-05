@@ -2,6 +2,7 @@
 """SQLite operations for the Lab 5 user app."""
 
 import sqlite3
+from contextlib import closing
 from pathlib import Path
 
 from flask import Flask, jsonify, request
@@ -19,7 +20,7 @@ def connect_to_db():
 
 
 def create_db_table():
-    with connect_to_db() as conn:
+    with closing(connect_to_db()) as conn, conn:
         conn.execute(
             """CREATE TABLE IF NOT EXISTS users (
                 user_id INTEGER PRIMARY KEY NOT NULL,
@@ -33,14 +34,14 @@ def create_db_table():
 
 
 def get_users():
-    with connect_to_db() as conn:
+    with closing(connect_to_db()) as conn, conn:
         conn.row_factory = sqlite3.Row
         rows = conn.execute("SELECT * FROM users").fetchall()
     return [{field: row[field] for field in USER_FIELDS} for row in rows]
 
 
 def get_user_by_id(user_id):
-    with connect_to_db() as conn:
+    with closing(connect_to_db()) as conn, conn:
         conn.row_factory = sqlite3.Row
         row = conn.execute(
             "SELECT * FROM users WHERE user_id = ?", (user_id,)
@@ -49,7 +50,7 @@ def get_user_by_id(user_id):
 
 
 def insert_user(user):
-    with connect_to_db() as conn:
+    with closing(connect_to_db()) as conn, conn:
         cursor = conn.execute(
             """INSERT INTO users (name, email, phone, address, country)
                VALUES (?, ?, ?, ?, ?)""",
@@ -60,7 +61,7 @@ def insert_user(user):
 
 
 def update_user(user):
-    with connect_to_db() as conn:
+    with closing(connect_to_db()) as conn, conn:
         conn.execute(
             """UPDATE users
                SET name = ?, email = ?, phone = ?, address = ?, country = ?
@@ -71,7 +72,7 @@ def update_user(user):
 
 
 def delete_user(user_id):
-    with connect_to_db() as conn:
+    with closing(connect_to_db()) as conn, conn:
         conn.execute("DELETE FROM users WHERE user_id = ?", (user_id,))
     return {"status": "User deleted successfully"}
 
