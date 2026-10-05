@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""SQLite operations for the Lab 5 user app."""
+"""EECE 435L Lab 5: Flask user app — Jad El Harkae."""
 
 import sqlite3
 from contextlib import closing
@@ -34,47 +34,62 @@ def create_db_table():
 
 
 def get_users():
-    with closing(connect_to_db()) as conn, conn:
-        conn.row_factory = sqlite3.Row
-        rows = conn.execute("SELECT * FROM users").fetchall()
-    return [{field: row[field] for field in USER_FIELDS} for row in rows]
+    try:
+        with closing(connect_to_db()) as conn, conn:
+            conn.row_factory = sqlite3.Row
+            rows = conn.execute("SELECT * FROM users").fetchall()
+        return [{field: row[field] for field in USER_FIELDS} for row in rows]
+    except sqlite3.Error:
+        return []
 
 
 def get_user_by_id(user_id):
-    with closing(connect_to_db()) as conn, conn:
-        conn.row_factory = sqlite3.Row
-        row = conn.execute(
-            "SELECT * FROM users WHERE user_id = ?", (user_id,)
-        ).fetchone()
-    return {field: row[field] for field in USER_FIELDS} if row else {}
+    try:
+        with closing(connect_to_db()) as conn, conn:
+            conn.row_factory = sqlite3.Row
+            row = conn.execute(
+                "SELECT * FROM users WHERE user_id = ?", (user_id,)
+            ).fetchone()
+        return {field: row[field] for field in USER_FIELDS} if row else {}
+    except sqlite3.Error:
+        return {}
 
 
 def insert_user(user):
-    with closing(connect_to_db()) as conn, conn:
-        cursor = conn.execute(
-            """INSERT INTO users (name, email, phone, address, country)
-               VALUES (?, ?, ?, ?, ?)""",
-            tuple(user[field] for field in USER_FIELDS[1:]),
-        )
-        user_id = cursor.lastrowid
-    return get_user_by_id(user_id)
+    try:
+        with closing(connect_to_db()) as conn, conn:
+            cursor = conn.execute(
+                """INSERT INTO users (name, email, phone, address, country)
+                   VALUES (?, ?, ?, ?, ?)""",
+                tuple(user[field] for field in USER_FIELDS[1:]),
+            )
+            user_id = cursor.lastrowid
+        return get_user_by_id(user_id)
+    except (sqlite3.Error, KeyError, TypeError):
+        return {}
 
 
 def update_user(user):
-    with closing(connect_to_db()) as conn, conn:
-        conn.execute(
-            """UPDATE users
-               SET name = ?, email = ?, phone = ?, address = ?, country = ?
-               WHERE user_id = ?""",
-            tuple(user[field] for field in USER_FIELDS[1:]) + (user["user_id"],),
-        )
-    return get_user_by_id(user["user_id"])
+    try:
+        with closing(connect_to_db()) as conn, conn:
+            conn.execute(
+                """UPDATE users
+                   SET name = ?, email = ?, phone = ?, address = ?, country = ?
+                   WHERE user_id = ?""",
+                tuple(user[field] for field in USER_FIELDS[1:]) + (user["user_id"],),
+            )
+        return get_user_by_id(user["user_id"])
+    except (sqlite3.Error, KeyError, TypeError):
+        return {}
 
 
 def delete_user(user_id):
-    with closing(connect_to_db()) as conn, conn:
-        conn.execute("DELETE FROM users WHERE user_id = ?", (user_id,))
-    return {"status": "User deleted successfully"}
+    try:
+        with closing(connect_to_db()) as conn, conn:
+            conn.execute("DELETE FROM users WHERE user_id = ?", (user_id,))
+        return {"status": "User deleted successfully"}
+    except sqlite3.Error:
+        return {"status": "Cannot delete user"}
 
 
 @app.route("/api/users", methods=["GET"])

@@ -17,7 +17,15 @@
           }
         ],
         "url": {
-          "raw": "{{base_url}}/api/users/add"
+          "raw": "{{base_url}}/api/users/add",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "api",
+            "users",
+            "add"
+          ]
         },
         "body": {
           "mode": "raw",
@@ -41,7 +49,15 @@
               }
             ],
             "url": {
-              "raw": "{{base_url}}/api/users/add"
+              "raw": "{{base_url}}/api/users/add",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "users",
+                "add"
+              ]
             },
             "body": {
               "mode": "raw",
@@ -58,11 +74,42 @@
           "_postman_previewlanguage": "json",
           "header": [
             {
+              "key": "Server",
+              "value": "Werkzeug/3.1.9 Python/3.14.6"
+            },
+            {
+              "key": "Date",
+              "value": "Mon, 05 Oct 2026 11:38:30 GMT"
+            },
+            {
               "key": "Content-Type",
               "value": "application/json"
+            },
+            {
+              "key": "Content-Length",
+              "value": "121"
+            },
+            {
+              "key": "Access-Control-Allow-Origin",
+              "value": "*"
+            },
+            {
+              "key": "Connection",
+              "value": "close"
             }
           ],
-          "body": "{\n  \"user_id\": 1,\n  \"name\": \"Jad El Harkae\",\n  \"email\": \"jad@example.com\",\n  \"phone\": \"01000000\",\n  \"address\": \"Beirut\",\n  \"country\": \"Lebanon\"\n}"
+          "body": "{\"address\":\"Beirut\",\"country\":\"Lebanon\",\"email\":\"jad@example.com\",\"name\":\"Jad El Harkae\",\"phone\":\"01000000\",\"user_id\":1}\n"
+        }
+      ],
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.collectionVariables.set(\"user_id\", pm.response.json().user_id);"
+            ]
+          }
         }
       ]
     },
@@ -72,7 +119,14 @@
         "method": "GET",
         "header": [],
         "url": {
-          "raw": "{{base_url}}/api/users"
+          "raw": "{{base_url}}/api/users",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "api",
+            "users"
+          ]
         }
       },
       "response": [
@@ -82,7 +136,14 @@
             "method": "GET",
             "header": [],
             "url": {
-              "raw": "{{base_url}}/api/users"
+              "raw": "{{base_url}}/api/users",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "users"
+              ]
             }
           },
           "status": "OK",
@@ -90,11 +151,31 @@
           "_postman_previewlanguage": "json",
           "header": [
             {
+              "key": "Server",
+              "value": "Werkzeug/3.1.9 Python/3.14.6"
+            },
+            {
+              "key": "Date",
+              "value": "Mon, 05 Oct 2026 11:38:30 GMT"
+            },
+            {
               "key": "Content-Type",
               "value": "application/json"
+            },
+            {
+              "key": "Content-Length",
+              "value": "123"
+            },
+            {
+              "key": "Access-Control-Allow-Origin",
+              "value": "*"
+            },
+            {
+              "key": "Connection",
+              "value": "close"
             }
           ],
-          "body": "[\n  {\n    \"user_id\": 1,\n    \"name\": \"Jad El Harkae\",\n    \"email\": \"jad@example.com\",\n    \"phone\": \"01000000\",\n    \"address\": \"Beirut\",\n    \"country\": \"Lebanon\"\n  }\n]"
+          "body": "[{\"address\":\"Beirut\",\"country\":\"Lebanon\",\"email\":\"jad@example.com\",\"name\":\"Jad El Harkae\",\"phone\":\"01000000\",\"user_id\":1}]\n"
         }
       ]
     },
@@ -104,7 +185,15 @@
         "method": "GET",
         "header": [],
         "url": {
-          "raw": "{{base_url}}/api/users/1"
+          "raw": "{{base_url}}/api/users/{{user_id}}",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "api",
+            "users",
+            "{{user_id}}"
+          ]
         }
       },
       "response": [
@@ -114,7 +203,15 @@
             "method": "GET",
             "header": [],
             "url": {
-              "raw": "{{base_url}}/api/users/1"
+              "raw": "{{base_url}}/api/users/1",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "users",
+                "1"
+              ]
             }
           },
           "status": "OK",
@@ -122,11 +219,31 @@
           "_postman_previewlanguage": "json",
           "header": [
             {
+              "key": "Server",
+              "value": "Werkzeug/3.1.9 Python/3.14.6"
+            },
+            {
+              "key": "Date",
+              "value": "Mon, 05 Oct 2026 11:38:30 GMT"
+            },
+            {
               "key": "Content-Type",
               "value": "application/json"
+            },
+            {
+              "key": "Content-Length",
+              "value": "121"
+            },
+            {
+              "key": "Access-Control-Allow-Origin",
+              "value": "*"
+            },
+            {
+              "key": "Connection",
+              "value": "close"
             }
           ],
-          "body": "{\n  \"user_id\": 1,\n  \"name\": \"Jad El Harkae\",\n  \"email\": \"jad@example.com\",\n  \"phone\": \"01000000\",\n  \"address\": \"Beirut\",\n  \"country\": \"Lebanon\"\n}"
+          "body": "{\"address\":\"Beirut\",\"country\":\"Lebanon\",\"email\":\"jad@example.com\",\"name\":\"Jad El Harkae\",\"phone\":\"01000000\",\"user_id\":1}\n"
         }
       ]
     },
@@ -141,11 +258,19 @@
           }
         ],
         "url": {
-          "raw": "{{base_url}}/api/users/update"
+          "raw": "{{base_url}}/api/users/update",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "api",
+            "users",
+            "update"
+          ]
         },
         "body": {
           "mode": "raw",
-          "raw": "{\n  \"user_id\": 1,\n  \"name\": \"Jad El Harkae\",\n  \"email\": \"jad@example.com\",\n  \"phone\": \"01999999\",\n  \"address\": \"Beirut\",\n  \"country\": \"Lebanon\"\n}",
+          "raw": "{\n  \"user_id\": {{user_id}},\n  \"name\": \"Jad El Harkae\",\n  \"email\": \"jad@example.com\",\n  \"phone\": \"01999999\",\n  \"address\": \"Beirut\",\n  \"country\": \"Lebanon\"\n}",
           "options": {
             "raw": {
               "language": "json"
@@ -165,7 +290,15 @@
               }
             ],
             "url": {
-              "raw": "{{base_url}}/api/users/update"
+              "raw": "{{base_url}}/api/users/update",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "users",
+                "update"
+              ]
             },
             "body": {
               "mode": "raw",
@@ -182,11 +315,31 @@
           "_postman_previewlanguage": "json",
           "header": [
             {
+              "key": "Server",
+              "value": "Werkzeug/3.1.9 Python/3.14.6"
+            },
+            {
+              "key": "Date",
+              "value": "Mon, 05 Oct 2026 11:38:30 GMT"
+            },
+            {
               "key": "Content-Type",
               "value": "application/json"
+            },
+            {
+              "key": "Content-Length",
+              "value": "121"
+            },
+            {
+              "key": "Access-Control-Allow-Origin",
+              "value": "*"
+            },
+            {
+              "key": "Connection",
+              "value": "close"
             }
           ],
-          "body": "{\n  \"user_id\": 1,\n  \"name\": \"Jad El Harkae\",\n  \"email\": \"jad@example.com\",\n  \"phone\": \"01999999\",\n  \"address\": \"Beirut\",\n  \"country\": \"Lebanon\"\n}"
+          "body": "{\"address\":\"Beirut\",\"country\":\"Lebanon\",\"email\":\"jad@example.com\",\"name\":\"Jad El Harkae\",\"phone\":\"01999999\",\"user_id\":1}\n"
         }
       ]
     },
@@ -196,7 +349,16 @@
         "method": "DELETE",
         "header": [],
         "url": {
-          "raw": "{{base_url}}/api/users/delete/1"
+          "raw": "{{base_url}}/api/users/delete/{{user_id}}",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "api",
+            "users",
+            "delete",
+            "{{user_id}}"
+          ]
         }
       },
       "response": [
@@ -206,7 +368,16 @@
             "method": "DELETE",
             "header": [],
             "url": {
-              "raw": "{{base_url}}/api/users/delete/1"
+              "raw": "{{base_url}}/api/users/delete/1",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "users",
+                "delete",
+                "1"
+              ]
             }
           },
           "status": "OK",
@@ -214,13 +385,39 @@
           "_postman_previewlanguage": "json",
           "header": [
             {
+              "key": "Server",
+              "value": "Werkzeug/3.1.9 Python/3.14.6"
+            },
+            {
+              "key": "Date",
+              "value": "Mon, 05 Oct 2026 11:38:30 GMT"
+            },
+            {
               "key": "Content-Type",
               "value": "application/json"
+            },
+            {
+              "key": "Content-Length",
+              "value": "39"
+            },
+            {
+              "key": "Access-Control-Allow-Origin",
+              "value": "*"
+            },
+            {
+              "key": "Connection",
+              "value": "close"
             }
           ],
-          "body": "{\n  \"status\": \"User deleted successfully\"\n}"
+          "body": "{\"status\":\"User deleted successfully\"}\n"
         }
       ]
+    }
+  ],
+  "variable": [
+    {
+      "key": "user_id",
+      "value": "1"
     }
   ]
 }
