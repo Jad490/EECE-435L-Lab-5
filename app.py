@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""EECE 435L Lab 5: Flask user app — Jad El Harkae."""
+"""EECE 435L Lab 5: Flask user app — Jad El Harake."""
 
 import sqlite3
 from contextlib import closing
